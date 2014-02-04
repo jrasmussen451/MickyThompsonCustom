@@ -13,7 +13,7 @@ four51.app.config(function($routeProvider, $locationProvider) {
 		$routeProvider.
 			when('/listOrders', { templateUrl: 'partials/listOrders.html', controller: 'ListOrdersCtrl' }).
 			when('/orderdetails/:orderid', {templateUrl: 'partials/orderDetails.html', controller: 'OrderDetailsCtrl'}).
-            when('/catalog', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
+            when('/catalog', { templateUrl: 'partials/homeView.html', controller: 'CategoryCtrl' }).
             when('/catalog/:categoryInteropID', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
             when('/product/:view/:productInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
             when('/product/:view/:productInteropID/:variantInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).

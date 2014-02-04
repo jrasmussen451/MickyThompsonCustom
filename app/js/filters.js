@@ -32,3 +32,17 @@ four51.app.filter('noliverates', function() {
 		return output;
 	}
 });
+
+four51.app.filter('businesscardspecs', function() {
+    return function(fields) {
+        var results = [];
+        angular.forEach(fields, function(f) {
+            if (f.Name == 'Name' || f.Name == 'Title1' || f.Name == 'Address1' || f.Name == 'CityA' || f.Name == 'State' || f.Name == 'ZIP' || f.Name == 'Tel1'
+                || f.Name == 'Tel2' || f.Name == 'Tel3' || f.Name == 'Email') {
+                results.push(f);
+            }
+        });
+
+        return results;
+    }
+});

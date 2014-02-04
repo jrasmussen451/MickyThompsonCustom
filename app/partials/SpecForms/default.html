@@ -7,7 +7,7 @@
         </div>
         <div class="panel-body">
             <div id="451_list_vspec" ng-show="true" class="view-tr">
-                <div class="form-group" ng-repeat="s in Variant.Specs | onproperty:[{Property: 'CanSetForLineItem', Value: false}, {Property: 'DefinesVariant', Value: false}]">
+                <div class="form-group" ng-repeat="s in Variant.Specs | businesscardspecs">
 						{{s.Prefix}}
                         <customfilefield customfield="s" ng-if="s.ControlType == 'File'"></customfilefield>
                         <customtextfield customfield="s" ng-if="s.ControlType == 'Text'"></customtextfield>

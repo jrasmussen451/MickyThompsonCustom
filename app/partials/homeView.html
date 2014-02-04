@@ -1,0 +1,33 @@
+<section class="container category-view">
+    <nav class="nav nav-cat-search">
+        <hr />
+        <ul>
+            <!--- TODO would like to see the toggle in scope and stay open if opened while navigation through categories and products until user decides to close aside nav --->
+            <li class="text-nav">
+                <span class="text-primary" ng-bind-html="currentCategory.Name || 'Categories'"></span>
+            </li>
+            <li class="pull-right">
+                <a href="#/search"><span><i class="fa fa-search" rel="tooltip" title="Search Products"></i></span></a>
+            </li>
+        </ul>
+        <hr />
+    </nav>
+    <aside class="col-sm-3 hidden-sm hidden-xs category-view-aside">
+        <nav class="nav 451_cat_nav">
+            <a href="#/catalog">All Products</a>
+            <ul class="nav-header 451_cat_item">
+                <categorytree tree='tree' current='currentCategory' />
+            </ul>
+        </nav>
+    </aside>
+    <div class="home-body col-sm-9 col-collapse" style="height:100%; background-color:#fff;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <figure>
+                        <img width="100%" src="https://shop.workflowone.com/Content/Stores/mickeythompsontires/Assets/hero-image-2.jpg"/>
+                    </figure>
+                </div>
+            </div>
+           </div>
+    </div>
+</section>

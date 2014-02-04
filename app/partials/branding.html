@@ -1,13 +1,11 @@
-<section class="jumbotron branding-view" ng-class="{'active': isActive('catalog')}" ng-show="user.Company.Logo.Url">
-    <!--- product centric sliders, new products, features and buyer company branded info would be nice here --->
+<section class="jumbotron branding-view" ng-class="{'active': isActive('catalog')}" ng-show="user.Company.Logo.Url" style="background-color:grey">
     <div class="container">
         <h3 ng-show="Four51User.isAuthenticated()">
             <figure>
                 <a ng-show="Four51User.isAuthenticated()" ng-click="refreshUser()" href="#/catalog">
-                    <img class="branding-view-logo" ng-src="{{user.Company.Logo.Url}}" />
+                    <img class="branding-view-logo" src="https://shop.workflowone.com/Content/Stores/mickeythompsontires/Assets/store-logo.png" />
                 </a>
             </figure>
-            <span>{{user.Company.Name}}</span>
         </h3>
     </div>
 </section>
