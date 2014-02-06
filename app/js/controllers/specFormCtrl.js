@@ -1,7 +1,10 @@
 'use strict';
 
-four51.app.controller('SpecFormCtrl', function ($location,$route, $routeParams, $scope, ProductDisplayService, Variant) {
+four51.app.controller('SpecFormCtrl', function ($location,$route, $routeParams, $scope, ProductDisplayService, Variant, Resources) {
 	var varID = $routeParams.variantInteropID == 'new' ? null :  $routeParams.variantInteropID;
+
+    $scope.states = Resources.states;
+    $scope.phonetype = Resources.phonetype;
 
 	ProductDisplayService.getProductAndVariant($routeParams.productInteropID, varID, function(data){
 		$scope.Product = data.product;

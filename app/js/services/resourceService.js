@@ -297,47 +297,19 @@ four51.app.factory('Resources', function() {
         { "label": "Washington", "value": "WA", "country": "US" },
         { "label": "West Virginia", "value": "WV", "country": "US" },
         { "label": "Wisconsin", "value": "WI", "country": "US" },
-        { "label": "Wyoming", "value": "WY", "country": "US" },
-        { "label": "Armed Forces Americas (AA)", "value": "AA", "country": "US" },
-        { "label": "Armed Forces Africa/Canada/Europe/Middle East (AE)", "value": "AE", "country": "US" },
-        { "label": "Armed Forces Pacific (AP)", "value": "AP", "country": "US" },
-        { "label": "American Samoa", "value": "AS", "country": "US" },
-        { "label": "Federated States of Micronesia", "value": "FM", "country": "US" },
-        { "label": "Guam", "value": "GU", "country": "US" },
-        { "label": "Marshall Islands", "value": "MH", "country": "US" },
-        { "label": "Northern Mariana Islands", "value": "MP", "country": "US" },
-        { "label": "Palau", "value": "PW", "country": "US" },
-        { "label": "Puerto Rico", "value": "PR", "country": "US" },
-        { "label": "Virgin Islands", "value": "VI", "country": "US" },
-        { "label": "Drenthe", "value": "Drenthe", "country": "NL" },
-        { "label": "Flevoland", "value": "Flevoland", "country": "NL" },
-        { "label": "Friesland", "value": "Friesland", "country": "NL" },
-        { "label": "Gelderland", "value": "Gelderland", "country": "NL" },
-        { "label": "Groningen", "value": "Groningen", "country": "NL" },
-        { "label": "Limburg", "value": "Limburg", "country": "NL" },
-        { "label": "Noord-Brabant", "value": "Noord-Brabant", "country": "NL" },
-        { "label": "Noord-Holland", "value": "Noord-Holland", "country": "NL" },
-        { "label": "Overijssel", "value": "Overijssel", "country": "NL" },
-        { "label": "Utrecht", "value": "Utrecht", "country": "NL" },
-        { "label": "Zeeland", "value": "Zeeland", "country": "NL" },
-        { "label": "Zuid-Holland", "value": "Zuid-Holland", "country": "NL" },
-        { "label": "Alberta", "value": "AB", "country": "CA" },
-        { "label": "British Columbia", "value": "BC", "country": "CA" },
-        { "label": "Manitoba", "value": "MB", "country": "CA" },
-        { "label": "New Brunswick", "value": "NB", "country": "CA" },
-        { "label": "Newfoundland and Labrador", "value": "NL", "country": "CA" },
-        { "label": "Northwest Territories", "value": "NT", "country": "CA" },
-        { "label": "Nova Scotia", "value": "NS", "country": "CA" },
-        { "label": "Nunavut", "value": "NU", "country": "CA" },
-        { "label": "Ontario", "value": "ON", "country": "CA" },
-        { "label": "Prince Edward Island", "value": "PE", "country": "CA" },
-        { "label": "Quebec", "value": "QC", "country": "CA" },
-        { "label": "Saskatchewan", "value": "SK", "country": "CA" },
-        { "label": "Yukon", "value": "YT", "country": "CA" }
+        { "label": "Wyoming", "value": "WY", "country": "US" }
+
     ];
+
+    var phonetype = [
+        {"label": "Phone"},
+        {"label": "Fax"},
+        {"label": "Cell"}
+    ]
 
     return {
         countries:  countries,
-        states: states
+        states: states,
+        phonetype: phonetype
     };
 });
