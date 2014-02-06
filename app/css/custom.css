@@ -1,8 +1,93 @@
 .jumbotron{
-    /*background-image:url('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTFHfPam7EhYz4Ts5cNSOZ3vQYDnxFsoGPIuif3aZ6Sy3th12Ux');*/
+    background-image:url('https://lh4.googleusercontent.com/-DKLPRgPkrf0/UvEtpSl8SCI/AAAAAAAAAJo/DomxXIzyGU4/w1357-h905-no/shutterstock_79940881.jpg');
     background-size:cover;
     background-position:center bottom;
     background-repeat:no-repeat;
     -webkit-box-shadow:inset 0 15px 15px 0 rgba(0,0,0,.5);
     box-shadow:inset 0 15px 15px 0 rgba(0,0,0,.5);
+}
+.category-menu-wrapper{
+    border-right:1px solid #303030;
+    background-color:#333333;
+    -webkit-box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+}
+.category-menu-wrapper ul, .category-menu-wrapper li{
+    list-style: none;
+    padding:0;
+}
+.category-menu-wrapper li, .category-menu-tree a{
+    color: #FFF;
+}
+.category-menu-wrapper {
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    z-index:999999;
+}
+.category-menu-wrapper h4{
+    color:#fff;
+    padding:15px;
+    padding-bottom:0;
+    margin:0;
+    height:51px;
+}
+.category-menu-wrapper > div:first-of-type{
+    padding:15px;
+}
+.category-menu-category-list{
+    max-height:65%;
+    overflow-y:auto;
+}
+.category-menu-tree a{
+    padding:5px 15px;
+    display:block;
+}
+.desktop-category-menu-wrapper .category-menu-tree li a{
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+.category-menu-tree a:hover{
+    text-decoration:none;
+}
+.left-category-menu.ng-hide-remove,
+.left-category-menu.ng-hide-add{
+    display:block !important;
+}
+
+.left-category-menu.ng-hide-remove {
+    -webkit-animation-duration: 500ms;
+    -moz-animation-duration: 500ms;
+    -o-animation-duration: 500ms;
+    animation-duration: 500ms;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeInLeftBig;
+    -moz-animation-name: fadeInLeftBig;
+    -o-animation-name: fadeInLeftBig;
+    animation-name: fadeInLeftBig;
+}
+.left-category-menu.ng-hide-add {
+    -webkit-animation-duration: 500ms;
+    -moz-animation-duration: 500ms;
+    -o-animation-duration: 500ms;
+    animation-duration: 500ms;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeOutLeftBig;
+    -moz-animation-name: fadeOutLeftBig;
+    -o-animation-name: fadeOutLeftBig;
+    animation-name: fadeOutLeftBig;
+}
+.category-menu-wrapper li{
+    border-top:1px solid #3f3f3f;
+    border-bottom:1px solid #303030;
 }

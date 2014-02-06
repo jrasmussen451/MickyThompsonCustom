@@ -1,6 +1,8 @@
 /* x-lg */
 @media (min-width: 1200px) {
-
+    .category-menu-wrapper{
+        display:none !important;
+    }
 
 
 }

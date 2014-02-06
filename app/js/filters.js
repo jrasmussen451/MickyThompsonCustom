@@ -35,12 +35,22 @@ four51.app.filter('noliverates', function() {
 
 four51.app.filter('businesscardspecs', function() {
     return function(fields) {
+        var text = {
+            'Address1': 'Address',
+            'Tel1': 'Telephone 3',
+            'Tel2': 'Telephone 2',
+            'Tel3': 'Telephone 1',
+            'Title1': 'Title',
+            'ZIP': 'Zip'
+        }
         var results = [];
         angular.forEach(fields, function(f) {
-            if (f.Name == 'Name' || f.Name == 'Title1' || f.Name == 'Address1' || f.Name == 'CityA' || f.Name == 'State' || f.Name == 'ZIP' || f.Name == 'Tel1'
-                || f.Name == 'Tel2' || f.Name == 'Tel3' || f.Name == 'Email') {
+            f.Name = text[f.Name] || f.Name;
+            if (f.Name == 'Name' || f.Name == 'Title' || f.Name == 'Address' || f.Name == 'City' || f.Name == 'State' || f.Name == 'Zip' || f.Name == 'Telephone 1'
+                || f.Name == 'Telephone 2' || f.Name == 'Telephone 3' || f.Name == 'Email') {
                 results.push(f);
             }
+
         });
 
         return results;

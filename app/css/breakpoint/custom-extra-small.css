@@ -2,6 +2,8 @@
 
 @media (max-width: 767px) {
 
-
+    .category-menu-wrapper{
+        width:80%;
+    }
 
 }
