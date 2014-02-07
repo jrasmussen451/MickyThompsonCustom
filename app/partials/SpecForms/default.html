@@ -6,7 +6,7 @@
             <h3 class="panel-title">{{Variant.ExternalID || 'Create New'}}</h3>
         </div>
         <div class="panel-body">
-            <div id="451_list_vspec" ng-show="true" class="view-tr">
+            <div id="451_list_vspec" ng-show="true">
 
                 <div class="view-form-icon">
                     <div>
@@ -51,6 +51,7 @@
                     </div>
                 </div>
                 <br />
+                <br />
                 <div class="row">
                     <div class="col-xs-2">
                         <div class="form-view-icon">
@@ -77,34 +78,61 @@
                         </div>
                     </div>
                 </div>
-                <div class="view-form-icon row">
+                <br />
+                <br />
+                <div class="row">
                     <div class="col-xs-2">
-                        <label>Type 2</label>
-                        <select name="phonetype" class="form-control" ng-options="type.label for type in phonetype" ng-model="Variant.phonetype2" placeholder="phonetype"> </select>
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Type 2</label>
+                                <select name="phonetype" class="form-control" ng-options="type.label for type in phonetype" ng-model="Variant.phonetype" placeholder="phonetype"></select>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-xs-5">
-                        <label>Telephone 2</label>
-                        <input ng-model="Variant.Telephone2" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Telephone 2</label>
+                                <input ng-model="Variant.Telephone2" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-xs-5">
-                        <label>Ext 2</label>
-                        <input ng-model="Variant.Ext2" type="tel" class="form-control"/>
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Ext 2</label>
+                                <input ng-model="Variant.Ext2" type="tel" class="form-control"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="view-form-icon row">
+                <br />
+                <br />
+                <div class="row">
                     <div class="col-xs-2">
-                        <label>Type 3</label>
-                        <select name="phonetype" class="form-control" ng-options="type.label for type in phonetype" ng-model="Variant.phonetype3" placeholder="phonetype"> </select>
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Type 1</label>
+                                <select name="phonetype" class="form-control" ng-options="type.label for type in phonetype" ng-model="Variant.phonetype" placeholder="phonetype"></select>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-xs-5">
-                        <label>Telephone 3</label>
-                        <input ng-model="Variant.Telephone3" type="text" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Telephone 3</label>
+                                <input ng-model="Variant.Telephone3" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-xs-5">
-                        <label>Ext 3</label>
-                        <input ng-model="Variant.Ext3" type="text" class="form-control"/>
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Ext 3</label>
+                                <input ng-model="Variant.Ext3" type="tel" class="form-control"/>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
                 <div class="view-form-icon">
                     <div>
