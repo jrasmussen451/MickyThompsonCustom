@@ -17,37 +17,37 @@
                 <div class="view-form-icon">
                     <div>
                         <label>Name</label>
-                        <input ng-model="Variant.name" type="text" class="form-control"/>
+                        <input ng-model="Variant.Specs.Name.Value" type="text" class="form-control"/>
                     </div>
                 </div>
                 <div class="view-form-icon">
                     <div>
                         <label>Title</label>
-                        <input ng-model="Variant.title" type="text" class="form-control"/>
+                        <input ng-model="Variant.Specs.Title1.Value" type="text" class="form-control"/>
                     </div>
                 </div>
                 <div class="view-form-icon">
                     <div>
                         <label>Address</label>
-                        <input ng-model="Variant.address" type="text" class="form-control"/>
+                        <input ng-model="Variant.Specs.Address1.Value" type="text" class="form-control"/>
                     </div>
                 </div>
                 <div class="view-form-icon">
                     <div>
                         <label>City</label>
-                        <input ng-model="Variant.city" type="text" class="form-control"/>
+                        <input ng-model="Variant.Specs.City.Value" type="text" class="form-control"/>
                     </div>
                 </div>
-                <div class="view-form-icon">
-                    <div>
-                        <label>State</label>
-                        <select name="States" class="form-control" ng-options="state.label for state in states" ng-model="Variant.state" placeholder="State"> </select>
-                    </div>
+                <br />
+                <div class="form-group" ng-repeat="s in Variant.Specs | businesscardspecs">
+                    {{s.Prefix}}
+                    <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+                    {{s.Suffix}}
                 </div>
                 <div class="view-form-icon">
                     <div>
                         <label>Zip</label>
-                        <input ng-model="Variant.zip" type="text" class="form-control" ui-mask="{{'99999'}}"/>
+                        <input ng-model="Variant.Specs.ZIP.Value" type="text" class="form-control" ui-mask="{{'99999'}}"/>
                     </div>
                 </div>
                 <br />
@@ -55,9 +55,8 @@
                 <div class="row">
                     <div class="col-xs-2">
                         <div class="form-view-icon">
-                            <div>
-                                <label>Type 1</label>
-                                <select name="phonetype" class="form-control" ng-options="type.label for type in phonetype" ng-model="Variant.phonetype" placeholder="phonetype"></select>
+                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
+                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
                             </div>
                         </div>
                     </div>
@@ -65,7 +64,7 @@
                         <div class="form-view-icon">
                             <div>
                                 <label>Telephone 1</label>
-                                <input ng-model="Variant.Telephone1" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                                <input ng-model="Variant.Specs.Tel1.Value" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
                             </div>
                         </div>
                     </div>
@@ -73,7 +72,7 @@
                         <div class="form-view-icon">
                             <div>
                                 <label>Ext 1</label>
-                                <input ng-model="Variant.Ext1" type="tel" class="form-control"/>
+                                <input ng-model="Variant.Specs.Ext1.Value" type="tel" class="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -83,9 +82,8 @@
                 <div class="row">
                     <div class="col-xs-2">
                         <div class="form-view-icon">
-                            <div>
-                                <label>Type 2</label>
-                                <select name="phonetype" class="form-control" ng-options="type.label for type in phonetype" ng-model="Variant.phonetype" placeholder="phonetype"></select>
+                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
+                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
                             </div>
                         </div>
                     </div>
@@ -93,7 +91,7 @@
                         <div class="form-view-icon">
                             <div>
                                 <label>Telephone 2</label>
-                                <input ng-model="Variant.Telephone2" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                                <input ng-model="Variant.Specs.Tel2.Value" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
                             </div>
                         </div>
                     </div>
@@ -101,7 +99,7 @@
                         <div class="form-view-icon">
                             <div>
                                 <label>Ext 2</label>
-                                <input ng-model="Variant.Ext2" type="tel" class="form-control"/>
+                                <input ng-model="Variant.Specs.Ext2.Value" type="tel" class="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -111,9 +109,8 @@
                 <div class="row">
                     <div class="col-xs-2">
                         <div class="form-view-icon">
-                            <div>
-                                <label>Type 1</label>
-                                <select name="phonetype" class="form-control" ng-options="type.label for type in phonetype" ng-model="Variant.phonetype" placeholder="phonetype"></select>
+                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
+                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
                             </div>
                         </div>
                     </div>
@@ -121,7 +118,7 @@
                         <div class="form-view-icon">
                             <div>
                                 <label>Telephone 3</label>
-                                <input ng-model="Variant.Telephone3" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                                <input ng-model="Variant.Specs.Tel3.Value" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
                             </div>
                         </div>
                     </div>
@@ -129,7 +126,7 @@
                         <div class="form-view-icon">
                             <div>
                                 <label>Ext 3</label>
-                                <input ng-model="Variant.Ext3" type="tel" class="form-control"/>
+                                <input ng-model="Variant.Specs.Ext3.Value" type="tel" class="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -137,17 +134,9 @@
                 <div class="view-form-icon">
                     <div>
                         <label>Email</label>
-                        <input ng-model="Variant.email" type="email" class="form-control"/>
+                        <input ng-model="Variant.Specs.Email.Value" type="email" class="form-control"/>
                     </div>
                 </div>
-
-                <!--<div class="form-group" ng-repeat="s in Variant.Specs | businesscardspecs">-->
-						<!--{{s.Prefix}}-->
-                        <!--<customfilefield customfield="s" ng-if="s.ControlType == 'File'"></customfilefield>-->
-                        <!--<customtextfield customfield="s" ng-if="s.ControlType == 'Text'"></customtextfield>-->
-                        <!--<customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>-->
-                        <!--{{s.Suffix}}-->
-                <!--</div>-->
             </div>
         </div>
         <div class="panel-footer">

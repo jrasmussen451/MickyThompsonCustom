@@ -36,18 +36,63 @@ four51.app.filter('noliverates', function() {
 four51.app.filter('businesscardspecs', function() {
     return function(fields) {
         var text = {
-            'Address1': 'Address',
-            'Tel1': 'Telephone 3',
-            'Tel2': 'Telephone 2',
-            'Tel3': 'Telephone 1',
-            'Title1': 'Title',
-            'ZIP': 'Zip'
+            'StateA': 'State'
         }
         var results = [];
         angular.forEach(fields, function(f) {
             f.Name = text[f.Name] || f.Name;
-            if (f.Name == 'Name' || f.Name == 'Title' || f.Name == 'Address' || f.Name == 'City' || f.Name == 'State' || f.Name == 'Zip' || f.Name == 'Telephone 1'
-                || f.Name == 'Telephone 2' || f.Name == 'Telephone 3' || f.Name == 'Email') {
+            if (f.Name == 'State'){
+                results.push(f);
+            }
+
+        });
+
+        return results;
+    }
+});
+four51.app.filter('businesscardspecs1', function() {
+    return function(fields) {
+        var text = {
+            'Teltype1': 'Type 1'
+        }
+        var results = [];
+        angular.forEach(fields, function(f) {
+            f.Name = text[f.Name] || f.Name;
+            if (f.Name == 'Type 1'){
+                results.push(f);
+            }
+
+        });
+
+        return results;
+    }
+});
+four51.app.filter('businesscardspecs2', function() {
+    return function(fields) {
+        var text = {
+            'Teltype2': 'Type 2'
+        }
+        var results = [];
+        angular.forEach(fields, function(f) {
+            f.Name = text[f.Name] || f.Name;
+            if (f.Name == 'Type 2'){
+                results.push(f);
+            }
+
+        });
+
+        return results;
+    }
+});
+four51.app.filter('businesscardspecs3', function() {
+    return function(fields) {
+        var text = {
+            'Teltype3': 'Type 3'
+        }
+        var results = [];
+        angular.forEach(fields, function(f) {
+            f.Name = text[f.Name] || f.Name;
+            if (f.Name == 'Type 3'){
                 results.push(f);
             }
 
