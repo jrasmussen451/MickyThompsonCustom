@@ -1,37 +1,175 @@
 <section class="container specform-default">
     <productnav editvariant="true" product="Product" variant="Variant" />
-
-    <div class="col-md-4 col-collapse">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <figure>
-                    <img ng-src="{{Variant.PreviewUrl}}" />
-                </figure>
-                <div class="empty view-thumbnail" ng-hide="Variant.PreviewUrl">
-                    <span class="fa empty"><i class="fa fa-camera"></i></span>
-                </div>
-            </div>
+    <img ng-src="{{Variant.PreviewUrl}}" />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{Variant.ExternalID || 'Create New'}}</h3>
         </div>
-    </div>
-    <div class="col-md-7 col-md-offset-1 col-collapse">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{Variant.ExternalID || 'Create New'}}</h3>
-            </div>
-            <div class="panel-body">
-                <div id="451_list_vspec" ng-show="true">
-                    <div class="form-group" ng-repeat="s in Variant.Specs | onproperty:[{Property: 'CanSetForLineItem', Value: false}, {Property: 'DefinesVariant', Value: false}]">
-                            <customfilefield customfield="s" ng-if="s.ControlType == 'File'"></customfilefield>
-                            <customtextfield customfield="s" ng-if="s.ControlType == 'Text'"></customtextfield>
-                            <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'" class="row"></customselectionfield>
+        <div class="panel-body">
+            <div id="451_list_vspec" ng-show="true">
+
+                <div class="view-form-icon">
+                    <div>
+                        <label>Variant Name</label>
+                        <input type="text" class="form-control" ng-model="Variant.ExternalID"/>
+                    </div>
+                </div>
+                <div class="view-form-icon">
+                    <div>
+                        <label>Name</label>
+                        <input ng-model="Variant.Specs.Name.Value" type="text" class="form-control"/>
+                    </div>
+                </div>
+                <div class="view-form-icon">
+                    <div>
+                        <label>Title</label>
+                        <input ng-model="Variant.Specs.Title1.Value" type="text" class="form-control"/>
+                    </div>
+                </div>
+                <div class="view-form-icon">
+                    <div>
+                        <label>Address</label>
+                        <input ng-model="Variant.Specs.Address1.Value" type="text" class="form-control"/>
+                    </div>
+                </div>
+                <div class="view-form-icon">
+                    <div>
+                        <label>City</label>
+                        <input ng-model="Variant.Specs.City.Value" type="text" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group" ng-repeat="s in Variant.Specs | businesscardspecs">
+                    {{s.Prefix}}
+                    <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+                    {{s.Suffix}}
+                </div>
+                <div class="view-form-icon">
+                    <div>
+                        <label>Zip</label>
+                        <input ng-model="Variant.Specs.ZIP.Value" type="text" class="form-control" ui-mask="{{'99999'}}"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="form-view-icon">
+                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
+                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Telephone 1</label>
+                                <input ng-model="Variant.Specs.Tel1.Value" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Ext 1</label>
+                                <input ng-model="Variant.Specs.Ext1.Value" type="tel" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="form-view-icon">
+                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
+                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Telephone 2</label>
+                                <input ng-model="Variant.Specs.Tel2.Value" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Ext 2</label>
+                                <input ng-model="Variant.Specs.Ext2.Value" type="tel" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="form-view-icon">
+                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
+                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Telephone 3</label>
+                                <input ng-model="Variant.Specs.Tel3.Value" type="tel" class="form-control" ui-mask="{{'(999) 999-9999'}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-view-icon">
+                            <div>
+                                <label>Ext 3</label>
+                                <input ng-model="Variant.Specs.Ext3.Value" type="tel" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-form-icon">
+                    <div>
+                        <label>Email</label>
+                        <input ng-model="Variant.Specs.Email.Value" type="email" class="form-control"/>
                     </div>
                 </div>
             </div>
-            <div class="panel-footer">
-                <button class="btn btn-primary pull-right" type="submit" ng-click="save()">Save</button>
-            </div>
         </div>
-    </div>
+        <div class="panel-footer">
+            <button class="bproductstn btn-primary" type="submit" ng-click="save()">Save</button>
+
+    <!--<div class="col-md-4 col-collapse">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-body">-->
+                <!--<figure>-->
+                    <!--<img ng-src="{{Variant.PreviewUrl}}" />-->
+                <!--</figure>-->
+                <!--<div class="empty view-thumbnail" ng-hide="Variant.PreviewUrl">-->
+                    <!--<span class="fa empty"><i class="fa fa-camera"></i></span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-md-7 col-md-offset-1 col-collapse">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                <!--<h3 class="panel-title">{{Variant.ExternalID || 'Create New'}}</h3>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+                <!--<div id="451_list_vspec" ng-show="true">-->
+                    <!--<div class="form-group" ng-repeat="s in Variant.Specs | onproperty:[{Property: 'CanSetForLineItem', Value: false}, {Property: 'DefinesVariant', Value: false}]">-->
+                            <!--<customfilefield customfield="s" ng-if="s.ControlType == 'File'"></customfilefield>-->
+                            <!--<customtextfield customfield="s" ng-if="s.ControlType == 'Text'"></customtextfield>-->
+                            <!--<customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'" class="row"></customselectionfield>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="panel-footer">-->
+                <!--<button class="btn btn-primary pull-right" type="submit" ng-click="save()">Save</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
 </section>
 
