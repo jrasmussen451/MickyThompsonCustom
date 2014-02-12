@@ -38,10 +38,10 @@
                         <input ng-model="Variant.Specs.City.Value" type="text" class="form-control"/>
                     </div>
                 </div>
-                <div class="form-group" ng-repeat="s in Variant.Specs | businesscardspecs">
-                    {{s.Prefix}}
-                    <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
-                    {{s.Suffix}}
+                <div class="form-group">
+                    <div>
+                        <customselectionfield customfield="Variant.Specs.StateA"></customselectionfield>
+                    </div>
                 </div>
                 <div class="view-form-icon">
                     <div>
@@ -52,8 +52,8 @@
                 <div class="row">
                     <div class="col-xs-2">
                         <div class="form-view-icon">
-                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
-                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+                            <div>
+                                <customselectionfield customfield="Variant.Specs.Type1"></customselectionfield>
                             </div>
                         </div>
                     </div>
@@ -79,8 +79,8 @@
                 <div class="row">
                     <div class="col-xs-2">
                         <div class="form-view-icon">
-                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
-                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+                            <div>
+                                <customselectionfield customfield="Variant.Specs.Type2"></customselectionfield>
                             </div>
                         </div>
                     </div>
@@ -106,8 +106,8 @@
                 <div class="row">
                     <div class="col-xs-2">
                         <div class="form-view-icon">
-                            <div ng-repeat="s in Variant.Specs | businesscardspecs3">
-                                <customselectionfield customfield="s" ng-if="s.ControlType == 'Selection'"></customselectionfield>
+                            <div>
+                                <customselectionfield customfield="Variant.Specs.Type3"></customselectionfield>
                             </div>
                         </div>
                     </div>
