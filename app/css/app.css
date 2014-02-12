@@ -1,7 +1,7 @@
 /*
 Theme name: Default
 Version: 1.0
-Template: Four51 Single Page App - Ken Buras (http://www.kenburas.com/)
+Template: Four51 Single Page App - Ken Buras (http://www.kenburas.com)
 
 ** If there is question on something the answer is most likely found in readMe.txt
 /* ----------------------------------------------------------------------------------------------- */
@@ -569,7 +569,6 @@ li.selected {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     border-left: 1px solid #ccc;
-    cursor: default;
     padding-left: 10px;
 }
 .crumbs ul li:first-child a:before {
@@ -607,6 +606,7 @@ li.selected {
     pointer-events:none;
 }
 
+.col-sm-4.view-form-select:before {left: 45px;}
 
 /* ----------------------------------------------------------------------------------------------- */
 /* Animations */
@@ -997,6 +997,7 @@ li.selected {
     bottom: 5%;
 }
 .app-loading-indicator-title p {margin: 0 auto; width: 500px;padding: 10px;}
+
 .container-content {
     padding: 15px 0;
 }
@@ -1161,10 +1162,8 @@ li.print {
     padding: 0;
 }
 
-.cart-view-line-items-repeater {
+.panel-body.cart-view-line-items-repeater {
     border-top: 1px solid #d6d6d6;
-    clear: both;
-    overflow: hidden;
     padding: 15px 0;
 }
 
@@ -1366,6 +1365,31 @@ li.print {
 
 .product-view-default h2 {margin-top: 0;}
 
+.view-inline-error {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 15px;
+    position: absolute;
+    left: 0; right: 0;
+    top: 100%;
+    white-space: normal;
+    word-break:normal;
+    z-index: 1;
+    background-color: #F2DEDE;
+    border: 1px solid #EBCCD1;
+    color: #A94442;
+}
+
+.view-inline-error:before {
+    content:"";
+    width:0;
+    height:0;
+    top: -10px;
+    left: 10px;
+    border-bottom:10px solid #F2DEDE;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;position: absolute;
+}
 
 ul.view-variant-list{
     list-style-type: none;
@@ -1511,6 +1535,12 @@ ul.view-variant-list{
 
 .cart-view-line-items-product {border-left: 1px solid #d6d6d6;}
 .navbar .fa-shopping-cart {  border-radius: 50%;   border: 1px solid #fff; text-align:center; padding: 10px;margin-top: -5px;}
+.view-order-shipping-edit-name input {padding: 0 5px;}
+
+.view-error-message li a {text-decoration: none;}
+.view-error-message ul li ul.two li {display: none;}
+.view-error-message ul li ul li:first-child {display: block;}
+.view-error-message ul li a i {display: block; height: 100%; width: 100%;}
 /* ----------------------------------------------------------------------------------------------- */
 /* Hello bootstrap, how do you do? */
 /* ----------------------------------------------------------------------------------------------- */

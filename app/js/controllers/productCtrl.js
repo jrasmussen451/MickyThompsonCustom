@@ -185,15 +185,21 @@ four51.app.factory('ProductDisplayService', function($451, $sce, Variant, Produc
 
 			if(scope.allowAddFromVariantList){
 				var haveQty = false;
+				var haveQtyError = false;
 				angular.forEach(scope.variantLineItems, function(item){
-					if(item.Quantity > 0){
+					if(item.Quantity > 0)
 						haveQty = true;
+					if(item.qtyError && !haveQtyError)
+					{
+						newErrorList.push(item.qtyError);
+						haveQtyError = true;
 					}
 				});
-
 				if(scope.LineItem.Product.Type == 'VariableText' && !Object.keys(scope.variantLineItems).length)
 					newErrorList.push("Please create a variant.");
-				else if(!haveQty) newErrorList.push("please select a quantity");
+				else if(!haveQty && !haveQtyError)
+					newErrorList.push("Please select a quantity");
+
 			}else if(!scope.LineItem.Quantity && !scope.LineItem.qtyError)//if there's a qty error, just use that. in this case, there's no qty error because it hasn't been validated yet.
 				newErrorList.push("Please select a quantity.");
 
@@ -312,7 +318,7 @@ four51.app.factory('ProductDisplayService', function($451, $sce, Variant, Produc
 			}
 		}
 
-		scope.allowAddToOrder =  scope.allowAddFromVariantList || (scope.LineItem.Variant || scope.LineItem.Product.VariantCount == 0);//this will include some order type and current order logic.
+		scope.allowAddToOrder =  scope.allowAddFromVariantList || (scope.LineItem.Variant || (scope.LineItem.Product.VariantCount == 0 && scope.LineItem.Product.Type != 'VariableText'));//this will include some order type and current order logic.
 
 		//short view//scope.allowAddToOrder = scope.LineItem.Product.Variants.length == 0 && scope.lineItemSpecs.length == 0 && scope.LineItem.Product.Type != 'VariableText';
 		//one view//ng-show="LineItem.Variant || LineItem.Product.Variants.length == 0"

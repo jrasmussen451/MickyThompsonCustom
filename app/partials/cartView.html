@@ -12,33 +12,29 @@
             <loadingindicator ng-show="displayLoadingIndicator" title="Please wait while we save your order"/>
             <div class="panel panel-default cart-view-line-items">
                 <div class="panel-heading">
-                            <h3 class="panel-title">
-                                {{currentOrder.LineItems.length}} item{{currentOrder.LineItems.length > 1 ? 's' : ''}} in your cart
-                            </h3>
+                    <h3 class="panel-title">
+                        {{currentOrder.LineItems.length}} item{{currentOrder.LineItems.length > 1 ? 's' : ''}} in your cart
+                    </h3>
                 </div>
-                <div class="panel-body">
-                    <div ng-repeat="item in currentOrder.LineItems" class="cart-view-line-items-repeater">
-                                <button title="Remove Item" class="btn btn-danger cart-view-btn-remove" ng-click="removeItem(item)">
-                                    <span class="fa fa-minus-circle fa-inverse"></span>
-                                </button>
+                    <div ng-repeat="item in currentOrder.LineItems" class="panel-body cart-view-line-items-repeater">
+                        <button title="Remove Item" class="btn btn-danger cart-view-btn-remove" ng-click="removeItem(item)">
+                            <span class="fa fa-minus-circle fa-inverse"></span>
+                        </button>
                         <div class="col-sm-3">
                             <div class="row">
                                 <div class="col-xs-6 col-sm-12 col-md-6 cart-view-quantity-line">
                                     <div class="view-form-icon">
-                                        <quantityfield lineitem="item" class="quantity"/>
+                                        <quantityfield required="true" lineitem="item" class="quantity"/>
                                     </div>
                                     <div style="border: 1px solid #d6d6d6;border-top: 0; text-align: center;padding-top: 10px;background-color:#F9F9F9;">
-                                        <p ng-show="item.Product.QuantityMultiplier = 1">
-                                            <small>Total Quantity {{item.Quantity * item.Product.QuantityMultiplier}}</small>
-                                        </p>
-                                        <p ng-show="item.Product.QuantityMultiplier != 1">
-                                            <small>Total Quantity {{item.Quantity}} x {{item.Quantity * item.Product.QuantityMultiplier}}</small>
+                                        <p>
+                                            <small>Total Quantity <span ng-show="item.Quantity * item.Product.QuantityMultiplier">{{item.Quantity * item.Product.QuantityMultiplier}}</span></small>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-12 col-md-6 text-center" ng-show="item.Variant.SmallImageUrl || item.Product.SmallImageUrl">
                                     <figure>
-                                        <img class="view-thumbnail" ng-src="{{item.Product.SmallImageUrl}}" />
+                                        <img class="view-thumbnail" ng-src="{{item.Product.SmallImageUrl || item.Variant.SmallImageUrl}}" />
                                     </figure>
                                 </div>
                             </div>
@@ -59,10 +55,7 @@
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <div ng-show="item.qtyError" class="alert alert-danger text-center">
-                                                <small>{{item.qtyError}}</small>
-                                            </div>
-                                            <div  ng-hide="item.qtyError" ng-if="!(user.Permissions.contains('HidePricing'))">
+                                            <div ng-if="!(user.Permissions.contains('HidePricing'))">
                                                 <small>Total</small>
                                                 <h2 class="text-success">
                                                     {{item.LineTotal | currency}}
@@ -127,7 +120,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <div class="panel-footer">
                     <div ng-if="user.Permissions.contains('ViewPromotions')" class="row">
                         <giftcardredemption />
@@ -146,21 +138,26 @@
                 <div class="view-response-message alert-success" alert-show="currentOrder">
                     <p>{{actionMessage}}</p>
                 </div>
-                <div class="view-error-message" ng-show="cart.$error.required.length + (errorMessage ? 1 : 0) > 0">
+                <div class="view-response-message alert-danger" alert-show="gcMessage">{{gcMessage}}</div>
+                <div class="view-error-message" ng-show="cart.$error.required.length > 0">
                     <ul class="row">
                         <li class="col-xs-2 alert-warning">
                             <i class="fa fa-exclamation-circle text-danger"></i>
-                            <span class="badge" ng-show="cart.$error.required.length + (errorMessage ? 1 : 0) > 1">{{cart.$error.required.length + (errorMessage ? 1 : 0)}}</span>
+                            <span class="badge" ng-show="cart.$error.required.length > 1">{{cart.$error.required.length}}</span>
                         </li>
                         <li class="col-xs-8 alert-warning" style="margin: 0; padding: 0">
-                            <ul>
-                                <li ng-show="cart.dateneeded.$invalid">Date needed is required</li>
-                                <li ng-show="cart.costcenter.$invalid">Cost Center is required</li>
-                                <li ng-show="cart.qtyInput.$invalid">You have entered an invalid quantity</li>
-                                <li ng-show="errorMessage">{{errorMessage}}</li>
+                            <ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
+                                <li ng-if="cart.dateneeded.$invalid">Date needed is required</li>
+                                <li ng-if="cart.costcenter.$invalid">Cost Center is required</li>
+                                <li ng-if="cart.qtyInput.$invalid">You have entered an invalid quantity</li>
                             </ul>
                         </li>
-                        <li class="col-xs-2"><a class="fa fa-caret-down" ng-show="cart.$error.required.length + (errorMessage ? 1 : 0) > 1"></a></li>
+                        <li class="col-xs-2">
+                            <a ng-show="cart.$error.required.length + (errorMessage ? 1 : 0) > 1">
+                                <i class="fa fa-caret-up" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
+                                <i class="fa fa-caret-down" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <ul class="view-footer-buttons">

@@ -13,6 +13,7 @@ four51.app.directive('ordershipping', function(Order, Shipper, Address, OrderCon
 			};
 
 			var saveChanges = function(callback) {
+				$scope.$parent.errorMessage = null;
 				Order.save($scope.currentOrder,
 					function(data) {
 						$scope.currentOrder = data;
@@ -21,7 +22,11 @@ four51.app.directive('ordershipping', function(Order, Shipper, Address, OrderCon
 						if (callback) callback($scope.currentOrder);
 					},
 					function(ex) {
-						$scope.actionMessage = ex.Message;
+						if (ex.Code.is('ObjectExistsException')) { // unique id
+							ex.Message = ex.Message.replace('{0}', 'Order ID (' + $scope.currentOrder.ExternalID + ')');
+						}
+						$scope.currentOrder.ExternalID = null;
+						$scope.$parent.errorMessage = ex.Message;
 						$scope.shippingUpdatingIndicator = false;
 						$scope.shippingFetchIndicator = false;
 					}
@@ -135,22 +140,7 @@ four51.app.directive('ordershipping', function(Order, Shipper, Address, OrderCon
 			$scope.$on('event:AddressCancel', function(event) {
 				$scope.addressform = false;
 			});
-			$scope.$on('event:AddressSaved', function(event, address) {
-				if (address.IsShipping) {
-					$scope.currentOrder.ShipAddressID = address.ID;
-					if (!$scope.shipToMultipleAddresses)
-						$scope.setShipAddressAtOrderLevel();
-				}
-				if (address.IsBilling) {
-					$scope.currentOrder.BillAddressID = address.ID;
-				}
-				AddressList.query(function(list) {
-					$scope.addresses = list;
-				});
-				$scope.addressform = false;
-				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: false };
-				$scope.billaddress = { Country: 'US', IsShipping: false, IsBilling: true };
-			});
+
 		}
 	};
 	return obj;

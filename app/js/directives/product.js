@@ -85,6 +85,7 @@ four51.app.directive('quantityfield', function($451, ProductDisplayService){
         },
         restrict: 'E',
         template: '<div>'+
+            '<inlineerror ng-show="lineitem.qtyError" title="{{lineitem.qtyError}}" />'+
             '<select class="form-control" ng-change="qtyChanged(lineitem)" ng-if="lineitem.PriceSchedule.RestrictedQuantity" ng-required="required" ng-model="lineitem.Quantity" ng-options="pb.Quantity as getRestrictedQtyText(pb, lineitem.Product.QuantityMultiplier) for pb in lineitem.PriceSchedule.PriceBreaks" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"><option value=""></option></select>'+
             '<input placeholder="0" autocomplete="off" class="form-control" ng-change="qtyChanged(lineitem)" ng-if="!lineitem.PriceSchedule.RestrictedQuantity" type="text" ng-required="required" name="qtyInput" ng-model="lineitem.Quantity" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"/>'+
             '<i class="fa fa-edit"></i>'+
@@ -106,8 +107,7 @@ four51.app.directive('quantityfield', function($451, ProductDisplayService){
 				var variant = lineItem.Variant;
 				var product = lineItem.Product;
 				var priceSchedule = lineItem.PriceSchedule;
-
-
+				
 				if(value == "" && !scope.required)
 				{
 					lineItem.qtyError = null;
@@ -117,7 +117,6 @@ four51.app.directive('quantityfield', function($451, ProductDisplayService){
 					scope.lineitem.qtyError = null;
 					return scope.valid | true;
 				}
-
                 if(!product && !variant)
 					return scope.valid | true;
 
@@ -126,6 +125,12 @@ four51.app.directive('quantityfield', function($451, ProductDisplayService){
 
 				scope.valid = true;
 
+				if(!$451.isPositiveInteger(value))
+				{
+					scope.lineitem.qtyError = "Please select a valid quantity";
+					scope.valid = false;
+					return scope.valid;
+				}
                 if(priceSchedule.MinQuantity > value){
 					scope.valid = false;
                     scope.lineitem.qtyError = "must be equal or greater than " + priceSchedule.MinQuantity;

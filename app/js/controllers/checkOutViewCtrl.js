@@ -10,8 +10,27 @@ four51.app.controller('CheckOutViewCtrl', function ($scope, $location, $filter, 
 	$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: false };
 	$scope.billaddress = { Country: 'US', IsShipping: false, IsBilling: true };
 
+	$scope.$on('event:AddressSaved', function(event, address) {
+		if (address.IsShipping) {
+			$scope.currentOrder.ShipAddressID = address.ID;
+			if (!$scope.shipToMultipleAddresses)
+				$scope.setShipAddressAtOrderLevel();
+			$scope.addressform = false;
+		}
+		if (address.IsBilling) {
+			$scope.currentOrder.BillAddressID = address.ID;
+			$scope.billaddressform = false;
+		}
+		AddressList.query(function(list) {
+			$scope.addresses = list;
+		});
+		$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: false };
+		$scope.billaddress = { Country: 'US', IsShipping: false, IsBilling: true };
+	});
+
     function submitOrder() {
 	    $scope.displayLoadingIndicator = true;
+	    $scope.errorMessage = null;
         Order.submit($scope.currentOrder,
 	        function(data) {
 				$scope.user.CurrentOrderID = null;
@@ -38,6 +57,7 @@ four51.app.controller('CheckOutViewCtrl', function ($scope, $location, $filter, 
 
     function saveChanges(callback) {
 	    $scope.displayLoadingIndicator = true;
+	    $scope.errorMessage = null;
         $scope.showSave = true;
 	    var auto = $scope.currentOrder.autoID;
         Order.save($scope.currentOrder,
@@ -56,7 +76,8 @@ four51.app.controller('CheckOutViewCtrl', function ($scope, $location, $filter, 
 		        if (ex.Code.is('ObjectExistsException')) { // unique id
 			        ex.Message = ex.Message.replace('{0}', 'Order ID (' + $scope.currentOrder.ExternalID + ')');
 		        }
-		        $scope.actionMessage = ex.Message;
+		        $scope.currentOrder.ExternalID = null;
+		        $scope.errorMessage = ex.Message;
 		        $scope.displayLoadingIndicator = false;
 		        $scope.shippingUpdatingIndicator = false;
 		        $scope.shippingFetchIndicator = false;
