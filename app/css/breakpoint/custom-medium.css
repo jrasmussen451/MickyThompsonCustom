@@ -3,6 +3,8 @@
     .category-menu-wrapper{
         display:none !important;
     }
-
+    li.left-aside{
+        display:none;
+    }
 
 }

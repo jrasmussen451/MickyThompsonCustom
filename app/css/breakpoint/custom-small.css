@@ -3,6 +3,8 @@
     .category-menu-wrapper{
         width:40%;
     }
-
+    li.back{
+        display:none;
+    }
 
 }

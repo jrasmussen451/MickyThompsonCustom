@@ -5,5 +5,7 @@
     .category-menu-wrapper{
         width:80%;
     }
-
+    li.back{
+        display:none;
+    }
 }
