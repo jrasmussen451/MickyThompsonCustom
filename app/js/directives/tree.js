@@ -3,7 +3,8 @@ four51.app.directive('categorytree', function() {
 		restrict: 'E',
 		replace: true,
 		scope: {
-			tree: '='
+			tree: '=',
+            current: '='
 		},
 		templateUrl: 'partials/categoryTree.html'
 	};
@@ -15,9 +16,10 @@ four51.app.directive('node', function($compile) {
 		restrict: 'E',
 		replace: true,
 		scope: {
-			node: '='
+			node: '=',
+            current: '='
 		},
-		template: '<li><a ng-href="#/catalog/{{node.InteropID}}" ng-bind-html="node.Name"></a></li>',
+		template: '<li ng-class="{active: current.InteropID == node.InteropID}"><a ng-href="#/catalog/{{node.InteropID}}" ng-bind-html="node.Name"></a></li>'
 //		link: function(scope, element) {
 //			if (angular.isArray(scope.node.SubCategories)) {
 //				element.append("<categorytree tree='node.SubCategories' />");

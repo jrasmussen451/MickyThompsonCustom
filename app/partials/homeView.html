@@ -12,15 +12,18 @@
         </ul>
         <hr />
     </nav>
-    <aside class="col-sm-3 hidden-sm hidden-xs category-view-aside">
-        <nav class="nav 451_cat_nav">
-            <a href="#/catalog">All Products</a>
-            <ul class="nav-header 451_cat_item">
-                <categorytree tree='tree' current='currentCategory' />
-            </ul>
-        </nav>
-    </aside>
-    <div class="home-body col-md-9 col-collapse" style="height:100%; background-color:#fff;">
+
+        <aside class="col-sm-3 hidden-sm hidden-xs">
+            <div class="row">
+                <nav class="nav category-list-container">
+                    <ul class="category-list">
+                        <categorytree tree='tree' current='currentCategory' />
+                    </ul>
+                </nav>
+            </div>
+
+        </aside>
+        <div class="home-body col-md-9" style="height:100%; background-color:#fff;">
             <div class="row">
                 <div class="col-xs-12">
                     <figure>
@@ -28,6 +31,6 @@
                     </figure>
                 </div>
             </div>
-           </div>
-    </div>
+        </div>
+
 </section>
