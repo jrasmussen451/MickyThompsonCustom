@@ -6,5 +6,7 @@
     li.left-aside{
         display:none;
     }
-
+    li.productList {
+        width: 33.33333%;
+    }
 }

@@ -8,4 +8,7 @@
     li.back{
         display:none;
     }
+    li.productList {
+        width: 100%;
+    }
 }

@@ -26,10 +26,10 @@
         <h2 class="text-success pull-right" ng-show="LineItem.PriceSchedule.PriceBreaks.length == 1" ng-if="!(user.Permissions.contains('HidePricing'))">
             {{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}
         </h2>
-        <h2 ng-hide="LineItem.Variant.ExternalID">
+        <h2 style="color:#FFF;" ng-hide="LineItem.Variant.ExternalID">
             {{LineItem.Product.Name}}
         </h2>
-        <h2 ng-show="LineItem.Variant.ExternalID">
+        <h2 style="color:#FFF;" ng-show="LineItem.Variant.ExternalID">
             {{LineItem.Variant.ExternalID}}
         </h2>
         <div ng-show="LineItem.Product.Description">
@@ -61,7 +61,7 @@
                         Order
                     </h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="padding-top:25px;">
                     <div ng-if="(LineItem.Product.Variants.length > 0 || LineItem.Product.Type == 'VariableText') && !LineItem.Variant" style="margin: -15px;border-bottom: 1px solid #d6d6d6;">
                          <div class="panel-heading">
                              <div class="container" style="padding-top: 15px;">

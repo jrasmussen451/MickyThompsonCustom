@@ -135,49 +135,50 @@
                 </div>
             </div>
             <div class="view-footer navbar-fixed-bottom">
-                <div class="view-response-message alert-success" alert-show="currentOrder">
-                    <p>{{actionMessage}}</p>
-                </div>
-                <div class="view-response-message alert-danger" alert-show="gcMessage">{{gcMessage}}</div>
-                <div class="view-error-message" ng-show="cart.$error.required.length > 0">
-                    <ul class="row">
-                        <li class="col-xs-2 alert-warning">
-                            <i class="fa fa-exclamation-circle text-danger"></i>
-                            <span class="badge" ng-show="cart.$error.required.length > 1">{{cart.$error.required.length}}</span>
+                <div class="container" style="padding:0;">
+                    <div class="view-response-message alert-success" alert-show="currentOrder">
+                        <p>{{actionMessage}}</p>
+                    </div>
+                    <div class="view-response-message alert-danger" alert-show="gcMessage">{{gcMessage}}</div>
+                    <div class="view-error-message" ng-show="cart.$error.required.length > 0">
+                        <ul class="row">
+                            <li class="col-xs-2 alert-warning">
+                                <i class="fa fa-exclamation-circle text-danger"></i>
+                                <span class="badge" ng-show="cart.$error.required.length > 1">{{cart.$error.required.length}}</span>
+                            </li>
+                            <li class="col-xs-8 alert-warning" style="margin: 0; padding: 0">
+                                <ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
+                                    <li ng-if="cart.dateneeded.$invalid">Date needed is required</li>
+                                    <li ng-if="cart.costcenter.$invalid">Cost Center is required</li>
+                                    <li ng-if="cart.qtyInput.$invalid">You have entered an invalid quantity</li>
+                                </ul>
+                            </li>
+                            <li class="col-xs-2">
+                                <a ng-show="cart.$error.required.length + (errorMessage ? 1 : 0) > 1">
+                                    <i class="fa fa-caret-up" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
+                                    <i class="fa fa-caret-down" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="view-footer-buttons">
+                        <li style="width: 25%;">
+                            <button class="btn btn-danger" ng-click="cancelOrder()"><small>Cancel</small></button>
                         </li>
-                        <li class="col-xs-8 alert-warning" style="margin: 0; padding: 0">
-                            <ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
-                                <li ng-if="cart.dateneeded.$invalid">Date needed is required</li>
-                                <li ng-if="cart.costcenter.$invalid">Cost Center is required</li>
-                                <li ng-if="cart.qtyInput.$invalid">You have entered an invalid quantity</li>
-                            </ul>
+                        <li style="width: 25%;">
+                            <button class="btn btn-primary" ng-click="saveChanges()">
+                                <loadingindicator ng-show="displayLoadingIndicator" />
+                                <small>Save</small>
+                            </button>
                         </li>
-                        <li class="col-xs-2">
-                            <a ng-show="cart.$error.required.length + (errorMessage ? 1 : 0) > 1">
-                                <i class="fa fa-caret-up" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
-                                <i class="fa fa-caret-down" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
-                            </a>
+                        <li>
+                            <button class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
+                                <i ng-show="cart.$invalid" class="fa fa-warning"></i>
+                                <span>Check Out {{window.outerWidth}}</span>
+                            </button>
                         </li>
                     </ul>
                 </div>
-                <ul class="view-footer-buttons">
-                    <li style="width: 25%;">
-                        <button class="btn btn-danger" ng-click="cancelOrder()"><small>Cancel Order</small></button>
-                    </li>
-                    <li style="width: 25%;">
-                        <button class="btn btn-primary" ng-click="saveChanges()">
-                            <loadingindicator ng-show="displayLoadingIndicator" />
-                            <small>Save Order</small>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid">
-                            <i ng-show="cart.$invalid" class="fa fa-warning"></i>
-                            <span>Check Out {{window.outerWidth}}</span>
-                        </button>
-                    </li>
-                </ul>
-
             </div>
         </form>
     </div>

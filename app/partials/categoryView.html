@@ -1,29 +1,16 @@
-<section class="container category-view">
+<section class="container category-view" style="margin-top:-15px;">
     <nav class="nav nav-cat-search container">
-        <hr />
         <ul>
             <!--- TODO would like to see the toggle in scope and stay open if opened while navigation through categories and products until user decides to close aside nav --->
             <li class="text-nav">
                 <span class="text-primary" ng-bind-html="currentCategory.Name || 'All Categories'"></span>
                 <span class="text-primary" ng-show="!currentCategory">All Categories</span>
             </li>
-            <li class="pull-right">
-                <a href="#/search"><span><i class="fa fa-search" data-title="Search Products" data-placement="left" bs-tooltip></i></span></a>
-            </li>
         </ul>
-        <hr />
     </nav>
 
-        <aside class="col-sm-3 hidden-sm hidden-xs">
-            <div class="row">
-                <nav class="nav category-list-container">
-                    <ul class="category-list">
-                        <categorytree tree='tree' current='currentCategory' />
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-        <div class="cat-body col-sm-9">
+
+        <div class="cat-body">
             <div class="category-product product-navigation" ng-show="currentCategory">
                 <loadingindicator ng-show="categoryLoadingIndicator" title="Please wait while we fetch all categories" />
                 <h3 class="text-primary" ng-show="currentCategory.SubCategories.length && currentCategory.InteropID">Categories</h3>
@@ -46,14 +33,18 @@
             </div>
             <div id="451_lst_prod" class="product-navigation" ng-if="currentCategory.InteropID">
                 <loadingindicator ng-show="productLoadingIndicator" title="Please wait while we fetch all products"/>
-                <h3 class="text-primary" ng-show="products">Products</h3>
-                <div ng-show="products" class="alert alert-info text-center view-phone-alert">
-                    <i class="fa fa-arrow-circle-o-left"></i>
-                    Swipe Product Left
+                <div class="category-nav row">
+                    <ul>
+                        <li><a>FILTER INPUT</a></li>
+                        <li><a>FILTER INPUT</a></li>
+                        <li><a>FILTER INPUT</a></li>
+                        <li><a>FILTER INPUT</a></li>
+                    </ul>
                 </div>
+                <!--FILTERS CAN GO HERE-->
                 <nav class="nav">
                     <ul>
-                        <li style="min-height:0;" class="nav-header well productList" ng-class="{ 'category-view-aside': showMega }" ng-repeat="product in products">
+                        <li style="min-height:0;" class="nav-header productList" ng-repeat="product in products">
                             <shortproductview p="product" user="user" />
                         </li>
                     </ul>

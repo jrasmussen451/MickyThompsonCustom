@@ -34,7 +34,25 @@
         <section class="hidden-print">
             <branding />
         </section>
-        <section class="container-content">
+        <section class="hidden-print">
+            <div class="container category-nav" style="padding:0;">
+                <ul>
+                    <li class="pull-right">
+                        <a href="#/search"><span><i class="fa fa-search" rel="tooltip" title="Search Products"></i></span></a>
+                    </li>
+                    <li>
+                        <a href="catalog/01-07058817-Shirts">Shirts</a>
+                    </li>
+                    <li>
+                        <a href="catalog/01-07058817-Jackets">Jackets</a>
+                    </li>
+                    <li>
+                        <a href="catalog/01-07058817-Hats">Hats</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="container-content container">
             <ng-view autoscroll />
         </section>
         <copyright ng-if="!user.Permissions.contains('UnBrandedSite')" />

@@ -1,57 +1,91 @@
-<div class="shortproduct-view row" ng-swipe-left="showSwipe = true">
-
-    <div class="col-sm-4">
+<div class="shortproduct-view row">
+    <div class="container">
         <a href="#/product/{{LineItem.Product.ViewName}}/{{LineItem.Product.InteropID}}">
-            <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
-                <img class="view-thumbnail" ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
+            <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" style="padding:15px 0; background-color:#fff; border:5px solid #000;">
+                <img style="margin-bottom:0;" class="view-thumbnail" ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
             </figure>
-            <div class="empty view-thumbnail" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">
-                <span class="fa empty"><i class="fa fa-camera"></i></span>
-            </div>
-            <div class="btn btn-default">
-                View Product
-            </div>
         </a>
-    </div>
-    <div class="col-sm-8">
-        <div class="text-left panel-body">
-            <h3>{{LineItem.Product.Name}}</h3>
-            <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
+        <div class="product-info container text-left">
+            <div class="container">
+                <p>{{LineItem.Product.Name}}</p>
+                <p>1/EA</p>
+                <p ng-show="inventoryDisplay(LineItem.Product, LineItem.Variant)">QUANTITY AVAILABLE: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}</p>
+            </div>
         </div>
-        <section class="hidden-xs hidden-sm panel-body">
-                <div class="text-left">
-                    <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
-                        {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
-                        <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
-                        for {{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}
-                    </p>
-                    <p ng-show="LineItem.Product.UnitOfMeasure">
-                        Unit of Measure: {{LineItem.Product.UnitOfMeasure}}
-                    </p>
+        <div class="container">
+            <div class="row" style="padding-top:15px; padding-bottom:60px;">
+                <div class="col-xs-6 text-center">
+                    <div class="container">
+                        <a href="#/product/{{LineItem.Product.ViewName}}/{{LineItem.Product.InteropID}}" class="btn btn-default">
+                            Details
+                        </a>
+                    </div>
 
-                    <p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
-                        QTY Available: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
-                    </p>
                 </div>
-        </section>
-    </div>
-    <!--- SWIPE INFO ON PHONE --->
-    <section class="shortproduct-view-swipe" ng-show="showSwipe" ng-swipe-right="showSwipe = false">
-        <div class="shortproduct-info panel-body text-center" ng-class="{ 'product-details': toggle }">
-            <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
-                {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
-                <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
-                for {{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}
-            </p>
-            <p ng-show="LineItem.Product.UnitOfMeasure">
-                Unit of Measure: {{LineItem.Product.UnitOfMeasure}}
-            </p>
-            <p ng-show="inventoryDisplay(LineItem.Product, LineItem.Variant)">
-                QTY Available: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
-            </p>
-            <button class="btn btn-default" redirect="#/product/{{LineItem.Product.ViewName}}/{{LineItem.Product.InteropID}}">
-                View Product
-            </button>
+                <div class="col-xs-6 text-center">
+                    <div class="container">
+                        <div style="color:#FFF; background-color:#000; padding:8px 0;">
+                            {{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+
+    </div>
+
+    <!--<div class="col-sm-4">-->
+        <!--<a href="#/product/{{LineItem.Product.ViewName}}/{{LineItem.Product.InteropID}}">-->
+            <!--<figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >-->
+                <!--<img class="view-thumbnail" ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>-->
+            <!--</figure>-->
+            <!--<div class="empty view-thumbnail" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">-->
+                <!--<span class="fa empty"><i class="fa fa-camera"></i></span>-->
+            <!--</div>-->
+            <!--<div class="btn btn-default">-->
+                <!--View Product-->
+            <!--</div>-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="col-sm-8">-->
+        <!--<div class="text-left panel-body">-->
+            <!--<h3>{{LineItem.Product.Name}}</h3>-->
+            <!--<p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />-->
+        <!--</div>-->
+        <!--<section class="hidden-xs hidden-sm panel-body">-->
+                <!--<div class="text-left">-->
+                    <!--<p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">-->
+                        <!--{{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}-->
+                        <!--<span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>-->
+                        <!--for {{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}-->
+                    <!--</p>-->
+                    <!--<p ng-show="LineItem.Product.UnitOfMeasure">-->
+                        <!--Unit of Measure: {{LineItem.Product.UnitOfMeasure}}-->
+                    <!--</p>-->
+
+                    <!--<p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">-->
+                        <!--QTY Available: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}-->
+                    <!--</p>-->
+                <!--</div>-->
+        <!--</section>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;- SWIPE INFO ON PHONE -&ndash;&gt;-->
+    <!--<section class="shortproduct-view-swipe" ng-show="showSwipe" ng-swipe-right="showSwipe = false">-->
+        <!--<div class="shortproduct-info panel-body text-center" ng-class="{ 'product-details': toggle }">-->
+            <!--<p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">-->
+                <!--{{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}-->
+                <!--<span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>-->
+                <!--for {{LineItem.PriceSchedule.PriceBreaks[0].Price | currency}}-->
+            <!--</p>-->
+            <!--<p ng-show="LineItem.Product.UnitOfMeasure">-->
+                <!--Unit of Measure: {{LineItem.Product.UnitOfMeasure}}-->
+            <!--</p>-->
+            <!--<p ng-show="inventoryDisplay(LineItem.Product, LineItem.Variant)">-->
+                <!--QTY Available: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}-->
+            <!--</p>-->
+            <!--<button class="btn btn-default" redirect="#/product/{{LineItem.Product.ViewName}}/{{LineItem.Product.InteropID}}">-->
+                <!--View Product-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</section>-->
 </div>
