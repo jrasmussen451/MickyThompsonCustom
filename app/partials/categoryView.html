@@ -31,17 +31,16 @@
                     </ul>
                 </nav>
             </div>
+            <div class="category-nav row">
+                <ul>
+                    <li><a>FILTER INPUT</a></li>
+                    <li><a>FILTER INPUT</a></li>
+                    <li><a>FILTER INPUT</a></li>
+                    <li><a>FILTER INPUT</a></li>
+                </ul>
+            </div>
             <div id="451_lst_prod" class="product-navigation" ng-if="currentCategory.InteropID">
                 <loadingindicator ng-show="productLoadingIndicator" title="Please wait while we fetch all products"/>
-                <div class="category-nav row">
-                    <ul>
-                        <li><a>FILTER INPUT</a></li>
-                        <li><a>FILTER INPUT</a></li>
-                        <li><a>FILTER INPUT</a></li>
-                        <li><a>FILTER INPUT</a></li>
-                    </ul>
-                </div>
-                <!--FILTERS CAN GO HERE-->
                 <nav class="nav">
                     <ul>
                         <li style="min-height:0;" class="nav-header productList" ng-repeat="product in products">
