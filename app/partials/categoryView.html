@@ -31,19 +31,17 @@
                     </ul>
                 </nav>
             </div>
-            <div class="category-nav row">
-                <ul>
-                    <li><a>FILTER INPUT</a></li>
-                    <li><a>FILTER INPUT</a></li>
-                    <li><a>FILTER INPUT</a></li>
-                    <li><a>FILTER INPUT</a></li>
-                </ul>
+            <div class="row">
+                    <button type="button" class="btn btn-danger" ng-model="predicate" ng-options="filter.value as filter.text for filter in filterDropdown" bs-select></button>
+                    <!--<li><a ng-click="predicate = 'Price'">Price Low to High</a></li>-->
+                    <!--<li><a ng-click="predicate = '-Price'">Price High to Low</a></li>-->
+                    <!--<li><button type="button" ng-model="predicate" class="btn btn-danger" ng-options="filter.text as filter.value for filter in filterDropdown" bs-select>Filter</button></li>-->
             </div>
             <div id="451_lst_prod" class="product-navigation" ng-if="currentCategory.InteropID">
                 <loadingindicator ng-show="productLoadingIndicator" title="Please wait while we fetch all products"/>
                 <nav class="nav">
                     <ul>
-                        <li style="min-height:0;" class="nav-header productList" ng-repeat="product in products">
+                        <li style="min-height:0;" class="nav-header productList" ng-repeat="product in products | orderBy:predicate">
                             <shortproductview p="product" user="user" />
                         </li>
                     </ul>

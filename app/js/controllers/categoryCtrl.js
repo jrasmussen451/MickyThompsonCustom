@@ -7,6 +7,15 @@ four51.app.controller('CategoryCtrl', function ($routeParams, $sce, $scope, $451
 	}
 	Product.search($routeParams.categoryInteropID, null, null, function(products) {
         $scope.products = products;
+        angular.forEach($scope.products, function(p){
+            p.Price = p.StandardPriceSchedule.PriceBreaks[0].Price;
+        });
+        angular.forEach($scope.products, function(n){
+            n.pname = n.Name;
+        });
+        angular.forEach($scope.products, function(n){
+            n.Number = n.InteropID;
+        });
 		$scope.productLoadingIndicator = false;
     });
     if ($routeParams.categoryInteropID) {
@@ -25,4 +34,10 @@ four51.app.controller('CategoryCtrl', function ($routeParams, $sce, $scope, $451
 		}
 	});
 
+    $scope.filterDropdown = [
+        {text:'Price Low to High', value: 'Price'},
+        {text:'Price High to Low', value: '-Price'},
+        {text:'Name', value: 'pname'},
+        {text:'Item Number', value: 'Number'},
+    ]
 });

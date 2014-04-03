@@ -33,69 +33,13 @@ four51.app.filter('noliverates', function() {
 	}
 });
 
-four51.app.filter('businesscardspecs', function() {
-    return function(fields) {
-        var text = {
-            'StateA': 'State'
-        }
+four51.app.filter('category', function() {
+    return function(categories) {
         var results = [];
-        angular.forEach(fields, function(f) {
-            f.Name = text[f.Name] || f.Name;
-            if (f.Name == 'State'){
-                results.push(f);
+        angular.forEach(categories, function(c) {
+            if (c.Name == 'Promotional Apparel' || c.Name == 'Hats' || c.Name == 'Jackets' || c.Name == 'Shirts') {
+                results.push(c);
             }
-
-        });
-
-        return results;
-    }
-});
-four51.app.filter('businesscardspecs1', function() {
-    return function(fields) {
-        var text = {
-            'Teltype1': 'Type 1'
-        }
-        var results = [];
-        angular.forEach(fields, function(f) {
-            f.Name = text[f.Name] || f.Name;
-            if (f.Name == 'Type 1'){
-                results.push(f);
-            }
-
-        });
-
-        return results;
-    }
-});
-four51.app.filter('businesscardspecs2', function() {
-    return function(fields) {
-        var text = {
-            'Teltype2': 'Type 2'
-        }
-        var results = [];
-        angular.forEach(fields, function(f) {
-            f.Name = text[f.Name] || f.Name;
-            if (f.Name == 'Type 2'){
-                results.push(f);
-            }
-
-        });
-
-        return results;
-    }
-});
-four51.app.filter('businesscardspecs3', function() {
-    return function(fields) {
-        var text = {
-            'Teltype3': 'Type 3'
-        }
-        var results = [];
-        angular.forEach(fields, function(f) {
-            f.Name = text[f.Name] || f.Name;
-            if (f.Name == 'Type 3'){
-                results.push(f);
-            }
-
         });
 
         return results;

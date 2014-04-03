@@ -9,6 +9,7 @@
             <div class="container">
                 <p>{{LineItem.Product.Name}}</p>
                 <p>1/EA</p>
+                <p>{{LineItem.Product.InteropID}}</p>
                 <p ng-show="inventoryDisplay(LineItem.Product, LineItem.Variant)">QUANTITY AVAILABLE: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}</p>
             </div>
         </div>
